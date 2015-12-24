@@ -1,0 +1,11 @@
+
+{
+    "rest-api":
+    {
+        "database"          : "ui-hack-day"         ,
+        "group"             : "Default"             ,
+        "modules-database"  : "ui-hack-day-modules" ,
+        "name"              : "ui-hack-day"         ,
+        "port"              : "3030"
+    }
+}
