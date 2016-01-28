@@ -68,7 +68,6 @@
         "try"                                                       ,
         "while"
     ]                                                               ,
-    "requireDollarBeforejQueryAssignment"       : true              ,
     "requireDotNotation"                        : true              ,
     "requireKeywordsOnNewLine"                  : [
         "else"

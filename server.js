@@ -1,12 +1,12 @@
 
 'use strict';
 
-var express     = require ( 'express'               ) ,
-    router      = require ( './router/router'       ) ,
-    log         = require ( './utilities/log'       ) ,
-    environment = require ( './environment'         ) ,
-    application = express () ,
-    server;
+var express     = require ( 'express'               )   ,
+    router      = require ( './router/router'       )   ,
+    logger      = require ( './utilities/logger'    )   ,
+    environment = require ( './environment'         )   ,
+    application = express ()                            ,
+    server                                              ;
 
 // Setup the router
 application.use ( '/' , router );
@@ -15,8 +15,8 @@ application.use ( '/' , router );
 server = application.listen ( environment.port , function () {
 
     // Log a friendly message on the current environment details
-    log.setConsoleMessage ( 'ENVIRONMENT  : ' , environment.name          );
-    log.setConsoleMessage ( 'PORT         : ' , environment.port          );
-    log.setConsoleMessage ( 'ADDRESS      : ' , server.address ().address );
+    logger.log ( 'ENVIRONMENT  : ' , environment.name          );
+    logger.log ( 'PORT         : ' , environment.port          );
+    logger.log ( 'ADDRESS      : ' , server.address ().address );
 
 });

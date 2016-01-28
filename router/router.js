@@ -1,12 +1,17 @@
 
 'use strict';
 
-var country = require ( '../controllers/country'    ) ,
-    express = require ( 'express'                   ) ,
-    router  = express.Router ()                     ;
+var aggregates  = require ( '../controllers/aggregate'  )   ,
+    authors     = require ( '../controllers/authors'    )   ,
+    express     = require ( 'express'                   )   ,
+    environment = require ( '../environment.js'         )   ,
+    router      = express.Router ()                         ,
+    version     = '/' + environment.version                 ,
+    doi         = ':prefix/:suffix'                         ;
 
 // Register the API routes
-router.route ( '/country/:item' ).get ( country.read );
+router.route ( version + '/:type/' + doi + '/aggregate' ).get ( aggregates.read );
+router.route ( version + '/:type/' + doi + '/authors'   ).get ( authors.read    );
 
 /**
  * Export the Express Router for our application

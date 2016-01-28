@@ -2,10 +2,10 @@
 {
     "rest-api":
     {
-        "database"          : "ui-hack-day"         ,
-        "group"             : "Default"             ,
-        "modules-database"  : "ui-hack-day-modules" ,
-        "name"              : "ui-hack-day"         ,
-        "port"              : "3030"
+        "database"          : "wiley-online-library"            ,
+        "group"             : "Default"                         ,
+        "modules-database"  : "wiley-online-library-modules"    ,
+        "name"              : "wiley-online-library"            ,
+        "port"              : "3001"
     }
 }
