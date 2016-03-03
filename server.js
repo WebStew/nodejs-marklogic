@@ -2,8 +2,8 @@
 'use strict';
 
 var express     = require ( 'express'               )   ,
-	morgan		= require ( 'morgan'				)	,
-	cors 		= require ( 'cors' 					) 	,
+    morgan      = require ( 'morgan'                )   ,
+    cors        = require ( 'cors'                  )   ,
     router      = require ( './router/router'       )   ,
     logger      = require ( './utilities/logger'    )   ,
     environment = require ( './environment'         )   ,
@@ -11,9 +11,9 @@ var express     = require ( 'express'               )   ,
     server                                              ;
 
 // Setup the router
-application.use ( cors () 		);
-application.use ( '/' , router 	);
-application.use (morgan('combinded'));
+application.use (morgan('combined'));
+application.use ( cors ()          );
+application.use ( '/' , router     );
 
 // Start the application
 server = application.listen ( environment.port , function () {
