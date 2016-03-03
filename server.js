@@ -10,8 +10,8 @@ var express     = require ( 'express'               )   ,
     server                                              ;
 
 // Setup the router
+application.use ( cors () 		);
 application.use ( '/' , router 	);
-application.use ( cors 			);
 
 // Start the application
 server = application.listen ( environment.port , function () {
