@@ -64,7 +64,8 @@ module.exports = {
 
             })
             .catch ( function ( error ) {
-                response.status ( error.statusCode ).send ( error );
+                console.log('error in authors controller ', error);
+                response.status ( error.statusCode || 500 ).send ( error );
             });
 
     }
