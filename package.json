@@ -6,7 +6,7 @@
   "logo": "http://media.wiley.com/spa_assets/R16B058/site/wiley2/cvo/images/wiley-wordmark-header.png",
   "private": true,
   "scripts": {
-    "start": "./node_modules/.bin/nodemon server.js"
+    "start": "nodemon server.js"
   },
   "devDependencies": {
     "cheerio": "^0.19.0",
