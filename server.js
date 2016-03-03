@@ -2,6 +2,7 @@
 'use strict';
 
 var express     = require ( 'express'               )   ,
+	cors 		= require ( 'cors' 					) 	,
     router      = require ( './router/router'       )   ,
     logger      = require ( './utilities/logger'    )   ,
     environment = require ( './environment'         )   ,
@@ -9,7 +10,8 @@ var express     = require ( 'express'               )   ,
     server                                              ;
 
 // Setup the router
-application.use ( '/' , router );
+application.use ( '/' , router 	);
+application.use ( cors 			);
 
 // Start the application
 server = application.listen ( environment.port , function () {
