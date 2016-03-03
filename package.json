@@ -5,12 +5,16 @@
   "homepage": "http://www.wiley.com",
   "logo": "http://media.wiley.com/spa_assets/R16B058/site/wiley2/cvo/images/wiley-wordmark-header.png",
   "private": true,
+  "scripts": {
+    "start": "./node_modules/.bin/nodemon server.js"
+  },
   "devDependencies": {
     "cheerio": "^0.19.0",
     "express": "^4.13.3",
     "grunt": "^0.4.5",
     "grunt-cli": "^0.1.13",
     "marklogic": "^1.0.4",
+    "nodemon": "^1.9.1",
     "xml2js": "^0.4.16"
   }
 }
