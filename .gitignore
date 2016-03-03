@@ -62,3 +62,4 @@ web.config
 
 # Our cfg files
 database/configuration.json
+database/configuration.js
