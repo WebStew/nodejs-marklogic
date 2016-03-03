@@ -8,4 +8,6 @@ var connection  = require ( '../database/connections'   ) ,
  * Exports a connection to the relevant Database
  * @type {Object}
  */
-module.exports = marklogic.createDatabaseClient ( connection );
+
+var db = marklogic.createDatabaseClient ( connection );
+module.exports = db;
