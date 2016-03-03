@@ -60,6 +60,3 @@ web.config
 .idea
 *.swp
 
-# Our cfg files
-database/configuration.json
-database/configuration.js

@@ -1,4 +1,4 @@
-module.exports = {
+{
     "rest-api":
     {
         "database"          : "wiley-online-library"            ,
