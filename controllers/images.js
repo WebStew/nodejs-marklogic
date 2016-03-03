@@ -5,14 +5,14 @@ var database    = require ( '../database/database'  ) ,
     string      = require ( '../utilities/string'   ) ,
     cheerio     = require ( 'cheerio'               ) ,
 
-    hrefBase = 'http://onlinelibrary.wiley.com/store/{{doi}}/asset/',
+    hrefBase = 'http://onlinelibrary.wiley.com/store/{{doi}}/asset/' ,
 
     /**
      * Creates an Array of author objects containing biography , name and surname properties.
      * @param   {Object} XML    The XML article object to search for images.
      * @return  {Array}         An array of author objects containing biography , name and surname properties.
      */
-    setImages  = function ( XML, doi ) {
+    setImages  = function ( XML , doi ) {
 
         var images = []                    ,
             $       = cheerio.load ( XML )  ;
@@ -20,31 +20,33 @@ var database    = require ( '../database/database'  ) ,
         // Loop through the articles images and create our results
         $ ( 'figure' ).each ( function () {
 
-            var image = $ ( this );
-            var imageOriginal = image.find('mediaResource[rendition="webOriginal"]');
-            var imageThumbnail = image.find('mediaResource[rendition="webLoRes"]');
+            var image = $ ( this ) ,
+                imageOriginal = image.find ( 'mediaResource[rendition="webOriginal"]' ) ,
+                imageThumbnail = image.find ( 'mediaResource[rendition="webLoRes"]' ) ,
 
-            var href = hrefBase.replace('{{doi}}', doi);
+                href = hrefBase.replace ( '{{doi}}' , doi );
 
             images.push ({
-                label: image.find('label').text().trim(),
-                caption: image.find('caption').text(),
-                href: href,
-                source: {
-                    original: {
-                        alt: imageOriginal.attr('alt'),
-                        name: imageOriginal.attr('href')
-                    },
-                    thumbnail: {
-                        alt: imageThumbnail.attr('alt'),
-                        name: imageThumbnail.attr('href')
-                    },
+                caption : image.find ( 'caption' ).text () ,
+                href    : href ,
+                label   : image.find ( 'label' ).text ().trim () ,
+                source  : {
+                    original : {
+                        alt  : imageOriginal.attr ( 'alt' ) ,
+                        name : imageOriginal.attr ( 'href' )
+                    } ,
+                    thumbnail : {
+                        alt  : imageThumbnail.attr ( 'alt' ) ,
+                        name : imageThumbnail.attr ( 'href' )
+                    } ,
+
                 }
             });
 
         });
 
-        return images;
+        return images ;
+
     };
 
 /**
@@ -72,15 +74,17 @@ module.exports = {
             .then ( function ( data ) {
 
                 var error   = string.setUCFirst ( type ) + ' ' + doi + ' not found.'    ,
-                    body    = data.length ? setImages ( data [ 0 ].content, doi ) : error   ,
+                    body    = data.length ? setImages ( data [ 0 ].content , doi ) : error   ,
                     status  = data.length ? 200 : 404                                   ;
 
                 response.status ( status ).send ( body );
 
             })
             .catch ( function ( error ) {
-                console.log('error in images controller ', error);
-                response.status ( error.statusCode || 500 ).send ( error );
-            });
+
+                console.log( 'error in images controller ' , error );
+                response.status ( error.statusCode || 500 ).send ( error ) ;
+            }) ;
+
     }
 };
