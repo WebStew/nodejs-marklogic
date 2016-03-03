@@ -14,21 +14,7 @@ var environment = require ( '../environment'        ) ,
      * for the different environments.
      * @type {Object}
      */
-    connections = {
-
-        /**
-         * Development environment Mark Logic Database connection details.
-         * @type {Object}
-         */
-        development : {
-            authType    : 'DIGEST'                  ,
-            database    : 'wiley-online-library'    ,
-            host        : 'localhost'               ,
-            password    : 'admin'                   ,
-            port        : 3001                      ,
-            user        : 'admin'
-        }
-    } ,
+    connections = require('./configuration'),
 
     /**
      * The connection details for current environment
