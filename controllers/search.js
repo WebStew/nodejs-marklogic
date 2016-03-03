@@ -6,17 +6,17 @@ var database    = require ( '../database/database'  ) ,
     cheerio     = require ( 'cheerio'               ) ,
     string      = require ( '../utilities/string'   ) ;
 
-var formatData = function(data) {
+var formatData = function ( data ) {
 
-    return data.map(function(docDescr) {
+    return data.map ( function ( document ) {
 
-        var $ = cheerio.load(docDescr.content);
+        var $ = cheerio.load ( document.content );
 
         return {
-            abstract    : $ ( 'abstract'                    ).text () ,
-            doi         : $ ( 'doi'                         ).text () ,
-            published   : $ ( 'firstPublishedSortableDate'  ).text () ,
-            title       : $ ( 'articleTitle'                ).text ()
+            abstract    : $ ( 'abstract'                            ).text () ,
+            doi         : $ ( 'publicationMeta[type="article"] doi' ).text () ,
+            published   : $ ( 'firstPublishedSortableDate'          ).text () ,
+            title       : $ ( 'contentMeta document-title'          ).text ()
         };
     });
 };
