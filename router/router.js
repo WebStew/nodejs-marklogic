@@ -4,6 +4,7 @@
 var aggregates  = require ( '../controllers/aggregate'  )   ,
     authors     = require ( '../controllers/authors'    )   ,
     citations   = require ( '../controllers/citations'  )   ,
+    images      = require ( '../controllers/images'     )   ,
     express     = require ( 'express'                   )   ,
     environment = require ( '../environment.js'         )   ,
     router      = express.Router ()                         ,
@@ -14,6 +15,7 @@ var aggregates  = require ( '../controllers/aggregate'  )   ,
 router.route ( version + '/:type/' + doi + '/aggregate' ).get ( aggregates.read );
 router.route ( version + '/:type/' + doi + '/authors'   ).get ( authors.read    );
 router.route ( version + '/:type/' + doi + '/citations' ).get ( citations.read  );
+router.route ( version + '/:type/' + doi + '/images'    ).get ( images.read    );
 
 /**
  * Export the Express Router for our application
