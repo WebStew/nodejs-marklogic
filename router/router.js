@@ -6,6 +6,7 @@ var aggregates  = require ( '../controllers/aggregate'  )   ,
     citations   = require ( '../controllers/citations'  )   ,
     images      = require ( '../controllers/images'     )   ,
     summary     = require ( '../controllers/summary'    )   ,
+    summaries   = require ( '../controllers/summaries' 	)   ,
     search		= require ( '../controllers/search'   	)	,
     express     = require ( 'express'                   )   ,
     environment = require ( '../environment.js'         )   ,
@@ -19,6 +20,7 @@ router.route ( version + '/:type/' + doi + '/authors'   ).get ( authors.read    
 router.route ( version + '/:type/' + doi + '/citations' ).get ( citations.read  );
 router.route ( version + '/:type/' + doi + '/images'    ).get ( images.read    	);
 router.route ( version + '/:type/' + doi + '/summary'  	).get ( summary.read 	);
+router.route ( version + '/:type/summaries' 			).get ( summaries.read 	);
 router.route ( version + '/search/:query'    			).get ( search.read    	);
 
 /**
