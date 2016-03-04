@@ -10,12 +10,15 @@ var formatData = function ( data ) {
 
     return data.map ( function ( document ) {
 
-        var $ = cheerio.load ( document.content );
+        var $           = cheerio.load ( document.content ) ,
+            abstract    = $ ( 'abstract' )                  ;
+
+            abstract.children ( 'title' ).remove ();
 
         return {
-            abstract    : $ ( 'abstract'                            ).text () ,
-            doi         : $ ( 'publicationMeta[type="article"] doi' ).text () ,
-            published   : $ ( 'firstPublishedSortableDate'          ).text () ,
+            abstract    : abstract.text ().trim ()                              ,
+            doi         : $ ( 'publicationMeta[type="article"] doi' ).text ()   ,
+            published   : $ ( 'firstPublishedSortableDate'          ).text ()   ,
             title       : $ ( 'contentMeta document-title'          ).text ()
         };
     });
